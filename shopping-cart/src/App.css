@@ -135,3 +135,7 @@ cart {
 .increment-decrement:active {
   transform: scale(0.98);
 }
+
+.remove-all-none {
+  display: none;
+}

@@ -54,7 +54,7 @@ const Cart = () => {
         );
       })}
       <button
-        className="remove-all"
+        className={foods.length === 0 ? "remove-all-none" : "remove-all"}
         onClick={() => {
           setFood([]);
         }}
