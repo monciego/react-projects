@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { data } from "../data";
+import React, { useState } from 'react';
+import { data } from '../data';
 
 const Cart = () => {
-  const [count, setcount] = useState(1);
   const [foods, setFood] = useState(data);
 
   const removeFood = (id) => {
@@ -11,50 +10,32 @@ const Cart = () => {
   };
 
   return (
-    <div className="items">
-      <p style={{ margin: "1.5em 0" }}>
+    <div className='items'>
+      <p style={{ margin: '1.5em 0' }}>
         {foods.length === 0
-          ? "You have empty food cart"
-          : `${"You have"}  ${foods.length}  ${"orders"}`}
+          ? 'You have empty food cart'
+          : `${'You have'}  ${foods.length}  ${'orders'}`}
       </p>
       {foods.map((foodData) => {
         const { id, food, size } = foodData;
         return (
-          <div key={id} className="item">
-            <div className="flex food">
+          <div key={id} className='item'>
+            <div className='flex food'>
               <p>{food}</p>|<p>{size}</p>
-            </div>
-            <div className="flex count">
-              <button
-                key={id}
-                onClick={() => {
-                  setcount(count + 1);
-                }}
-                className="increment-decrement"
-              >
-                <i className="fas fa-plus"></i>
-              </button>
-              <span className="count">{count}</span>
-              <button
-                className="increment-decrement"
-                onClick={() => setcount(count - 1)}
-              >
-                <i className="fas fa-minus"></i>
-              </button>
             </div>
             <div>
               <i
                 onClick={() => {
                   removeFood(id);
                 }}
-                className="fas fa-times"
+                className='fas fa-times'
               ></i>
             </div>
           </div>
         );
       })}
       <button
-        className={foods.length === 0 ? "remove-all-none" : "remove-all"}
+        className={foods.length === 0 ? 'remove-all-none' : 'remove-all'}
         onClick={() => {
           setFood([]);
         }}
