@@ -20,9 +20,25 @@ const Cart = () => {
     });
   };
 
+  const decrementQuantity = (orderId: number) => {
+    setOrder((prevOrders) => {
+      return prevOrders.map((order) => {
+        if (order.id === orderId) {
+          const price = order.price || order.defaultPrice;
+          return {
+            ...order,
+            quantity: order.quantity - 1,
+            price: price - order.defaultPrice,
+          };
+        }
+        return order;
+      });
+    });
+  };
+
   const removeOrder = (id: number) => {
-    let newFood = orders.filter((order) => order.id !== id);
-    setOrder(newFood);
+    let newOrder = orders.filter((order) => order.id !== id);
+    setOrder(newOrder);
   };
 
   return (
@@ -42,7 +58,10 @@ const Cart = () => {
             </div>
             <div className='order-actions'>
               <div className='order-quantity'>
-                <i className='fas fa-minus'></i>
+                <i
+                  onClick={() => decrementQuantity(order.id)}
+                  className='fas fa-minus'
+                ></i>
                 <span>{order.quantity}</span>
                 <i
                   onClick={() => incrementQuantity(order.id)}
