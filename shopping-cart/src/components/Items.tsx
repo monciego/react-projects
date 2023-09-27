@@ -22,17 +22,19 @@ const Cart = () => {
 
   const decrementQuantity = (orderId: number) => {
     setOrder((prevOrders) => {
-      return prevOrders.map((order) => {
-        if (order.id === orderId) {
-          const price = order.price || order.defaultPrice;
-          return {
-            ...order,
-            quantity: order.quantity - 1,
-            price: price - order.defaultPrice,
-          };
-        }
-        return order;
-      });
+      return prevOrders
+        .map((order) => {
+          if (order.id === orderId) {
+            const price = order.price || order.defaultPrice;
+            return {
+              ...order,
+              quantity: order.quantity - 1,
+              price: price - order.defaultPrice,
+            };
+          }
+          return order;
+        })
+        .filter((order) => order.quantity !== 0);
     });
   };
 
