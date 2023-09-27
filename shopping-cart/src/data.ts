@@ -2,7 +2,9 @@ type TData = {
   id: number;
   orderName: string;
   size: 'Regular' | 'Medium' | 'Large';
-  price: number;
+  defaultPrice: number;
+  quantity: number;
+  price?: number;
 };
 
 export const data: TData[] = [
@@ -10,30 +12,35 @@ export const data: TData[] = [
     id: 1,
     orderName: 'Carbonara Supreme',
     size: 'Large',
-    price: 429.0,
+    defaultPrice: 429.0,
+    quantity: 1,
   },
   {
     id: 2,
     orderName: 'Seafood Supreme',
     size: 'Large',
-    price: 429.0,
+    defaultPrice: 429.0,
+    quantity: 1,
   },
   {
     id: 3,
     orderName: 'Super Supreme',
     size: 'Large',
-    price: 429.0,
+    defaultPrice: 429.0,
+    quantity: 1,
   },
   {
     id: 4,
     orderName: 'Pepperoni Pizza',
     size: 'Regular',
-    price: 369.0,
+    defaultPrice: 369.0,
+    quantity: 1,
   },
   {
     id: 5,
     orderName: 'Bacon Margherita ',
     size: 'Medium',
-    price: 399.0,
+    defaultPrice: 399.0,
+    quantity: 1,
   },
 ];
