@@ -1,43 +1,50 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { data } from '../data';
 
 const Cart = () => {
-  const [foods, setFood] = useState(data);
+  const [orders, setOrder] = useState(data);
 
-  const removeFood = (id) => {
-    let newFood = foods.filter((food) => food.id !== id);
-    setFood(newFood);
+  const removeOrder = (id: number) => {
+    let newFood = orders.filter((order) => order.id !== id);
+    setOrder(newFood);
   };
 
   return (
     <div className='items'>
       <p style={{ margin: '1.5em 0' }}>
-        {foods.length === 0
+        {orders.length === 0
           ? 'You have empty food cart'
-          : `${'You have'}  ${foods.length}  ${'orders'}`}
+          : `${'You have'}  ${orders.length}  ${'orders'}`}
       </p>
-      {foods.map((foodData) => {
-        const { id, food, size } = foodData;
+      {orders.map((order) => {
         return (
-          <div key={id} className='item'>
-            <div className='flex food'>
-              <p>{food}</p>|<p>{size}</p>
+          <div key={order.id} className='item'>
+            <div className='order'>
+              <p>
+                {order.orderName} | {order.size}
+              </p>
             </div>
-            <div>
-              <i
-                onClick={() => {
-                  removeFood(id);
-                }}
-                className='fas fa-times'
-              ></i>
+            <div className='order-actions'>
+              <div className='order-quantity'>
+                <i className='fas fa-minus'></i>
+                <span>0</span>
+                <i className='fas fa-plus'></i>
+              </div>
+              <div>
+                <span className='order-price'>₱{order.price}</span>
+                <i
+                  onClick={() => removeOrder(order.id)}
+                  className='fas fa-times'
+                ></i>
+              </div>
             </div>
           </div>
         );
       })}
       <button
-        className={foods.length === 0 ? 'remove-all-none' : 'remove-all'}
+        className={orders.length === 0 ? 'remove-all-none' : 'remove-all'}
         onClick={() => {
-          setFood([]);
+          setOrder([]);
         }}
       >
         Remove All
