@@ -1,8 +1,10 @@
+import ExpenseItem from './components/expense-item';
+
 const App = () => {
   return (
-    <h1 className='bg-indigo-700 p-4 m-4 text-center text-white'>
-      Expense Tracker
-    </h1>
+    <main className='m-4'>
+      <ExpenseItem />
+    </main>
   );
 };
 
